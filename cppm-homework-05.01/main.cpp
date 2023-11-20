@@ -13,17 +13,21 @@ protected:
     int sides_count = 0;
     std::string name = "Figure: ";
 public:
-    Figure (int sides_count){};
+    Figure (int sides_count, std::string name)
+    {
+        this->sides_count = sides_count;
+        this->name = name;
+    };
 
    
-    void get_sides_count (int sides_count)
+    int get_sides_count ()
     {
-        std::cout << sides_count << std::endl;
+        return sides_count;
     }
     
-    void get_name (std::string name)
+    std::string get_name ()
     {
-        std::cout << name;
+        return name;
     }
     
 };
@@ -31,30 +35,30 @@ public:
 class Triangle : public Figure
 {
 public:
-    Triangle (int sides_count) : Figure (3){}
+    Triangle (int sides_count) : Figure (3,"Triangle: "){}
 };
 
 class Quadrangle : public Figure
 {
 public:
-    Quadrangle (int sides_count) : Figure (4){}
+    Quadrangle (int sides_count) : Figure (4,"Quadrangle: "){}
 };
 
 
 int main(int argc, const char * argv[]) {
    
-    Figure figure(0);
+    Figure figure(0,"Figure: ");
     Triangle triangle(3);
     Quadrangle quadrangle(4);
     std::cout << "Number of sides: " << std::endl;
     
    
-    figure.get_name("Figure: ");
-    figure.get_sides_count(0);
-    triangle.get_name("Triangle: ");
-    triangle.get_sides_count(3);
-    quadrangle.get_name("Quadrangle: ");
-    quadrangle.get_sides_count(4);
+    std::cout << figure.get_name();
+    std::cout << figure.get_sides_count() << std::endl;
+    std::cout << triangle.get_name();
+    std::cout << triangle.get_sides_count() << std::endl;
+    std::cout << quadrangle.get_name();
+    std::cout << quadrangle.get_sides_count() << std::endl;
     
     
     return 0;
